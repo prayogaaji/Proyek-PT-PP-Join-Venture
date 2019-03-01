@@ -1,0 +1,162 @@
+#include <IRremote.h>
+int IR = 8; // Membuat variable Ix untuk mewakili pin di arduino, 
+int L1 = 2;    // IR = Pin untuk data dari IR Receiver ; I1 = Input 1 di PIN 8 ; I2 = Input 2 di PIN 9 ; I3 = Input di PIN 10 ; I4 = Input PIN 11
+int L2 = 3;
+int L3 = 4;
+int L4 = 5;
+int L5 = 6;
+int L6 = 7;
+IRrecv irrecv(IR);
+decode_results results;
+
+void setup()
+{
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  pinMode(L1, OUTPUT); //
+  pinMode(L2, OUTPUT);
+  pinMode(L3, OUTPUT);
+  pinMode(L4, OUTPUT);
+  pinMode(L5, OUTPUT);
+  pinMode(L6, OUTPUT);
+
+  digitalWrite(L1, HIGH);
+  digitalWrite(L2, HIGH);
+  digitalWrite(L3, HIGH);
+  digitalWrite(L4, HIGH);
+  digitalWrite(L5, HIGH);
+  digitalWrite(L6, HIGH);
+}
+
+void loop() 
+{
+  
+  if (irrecv.decode(&results)) 
+    {
+      Eksekusi();
+      Serial.println(results.value);
+      irrecv.resume();
+    }
+}
+
+void Eksekusi(){
+  switch(results.value){
+    case 16738455: //16738455=VDWN;16756815=TOMBOL(0)
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      break;
+    case 16724175: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      break;
+    case 16718055: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L2,!digitalRead(L2));
+      digitalWrite(L5,!digitalRead(L5));
+      digitalWrite(L6,!digitalRead(L6));
+      break;
+    case 16743045: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L5,!digitalRead(L5));
+      digitalWrite(L6,!digitalRead(L6));
+      break;
+    case 16716015: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L2,!digitalRead(L2));
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      break;
+    case 16726215: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      digitalWrite(L5,!digitalRead(L5));
+      break;
+    case 16734885: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      digitalWrite(L5,!digitalRead(L5));
+      digitalWrite(L6,!digitalRead(L6));
+      break;
+    case 16728765: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L2,!digitalRead(L2));
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      digitalWrite(L5,!digitalRead(L5));
+      break;
+    case 16730805: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L2,!digitalRead(L2));
+      break;
+    case 16732845: //Ubah dan Sesuaikan dengan nilai dari masing masing tombol
+  digitalWrite(L1,LOW);
+  digitalWrite(L2,LOW);
+  digitalWrite(L3,LOW);
+  digitalWrite(L4,LOW);
+  digitalWrite(L5,LOW);
+  digitalWrite(L6,LOW);
+      digitalWrite(L1,!digitalRead(L1));
+      digitalWrite(L2,!digitalRead(L2));
+      digitalWrite(L3,!digitalRead(L3));
+      digitalWrite(L4,!digitalRead(L4));
+      digitalWrite(L5,!digitalRead(L5));
+      digitalWrite(L6,!digitalRead(L6));
+      break;
+      default:
+      break;
+  }
+  delay(100);
+}
